@@ -9,6 +9,12 @@ def level_the_second():
     fon = pygame.image.load("texturse/fon.png")
     fon = pygame.transform.scale(fon, (1248, 960))
 
+    font = pygame.font.Font(None, 50)
+    text = font.render("-Здравствуй, внучок мой, как дела?", 1, [255, 255, 255])
+    text1 = font.render("-Да я квартиру свою найти не могу и ключи потерял...", 1, [255, 255, 255])
+    text2 = font.render("-Проблема... О! Я же недавно ключик в подъезде нашла! Держи",1, [255, 255, 255])
+    text3 = font.render("-Спасибо, Александра Игоревна!", 1, [255, 255, 255])
+
     stone = pygame.image.load("texturse/мрамор итальянский.jpg")
     stone = pygame.transform.scale(stone, (wall_width, wall_height))
 
@@ -111,8 +117,11 @@ def level_the_second():
             key_r.x = 10000
         if key_r.x != 64:
             level_the_global1()
-
-        screen.blit(babka, (512, 416))
+        screen.blit(text, (100,50))
+        screen.blit(text1, (100,100))
+        screen.blit(text2, (100, 150))
+        screen.blit(text3, (100,200))
+        screen.blit(babka, (400, 416))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
