@@ -12,7 +12,7 @@ def level_the_second():
     stone = pygame.image.load("texturse/мрамор итальянский.jpg")
     stone = pygame.transform.scale(stone, (wall_width, wall_height))
 
-    babka = pygame.image.load("бабка.png")
+    babka = pygame.image.load("texturse/бабка.png")
     babka = pygame.transform.scale(babka, (160, 160))
 
     key = pygame.image.load("texturse/key.png")
