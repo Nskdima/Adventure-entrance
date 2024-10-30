@@ -15,7 +15,7 @@ def level_the_second():
     babka = pygame.image.load("texturse/бабка.png")
     babka = pygame.transform.scale(babka, (160, 160))
 
-    key = pygame.image.load("texturse/key.png")
+    key = pygame.image.load("texturse/ключ.png")
     key = pygame.transform.scale(key, (32, 32))
     key_r = key.get_rect(topleft=(64, 548))
 

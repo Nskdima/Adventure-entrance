@@ -95,7 +95,7 @@ def level_the_global1():
         screen.blit(ezhidze, ezhidze_r)
 
         ezhidze_r.x = ezhidze_r.x + step1
-        if ezhidze_r.x < 0 or ezhidze_r.x > 1216:
+        if ezhidze_r.x < 32 or ezhidze_r.x > 1184:
             step1 = -step1
 
         if player_r.colliderect(ezhidze_r):
