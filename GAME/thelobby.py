@@ -1,9 +1,9 @@
 def lobby():
-    from help import needhelp
+    from GAME.help import needhelp
     import pygame
     import pygame_menu
     from pygame_menu import Theme
-    from main import level_the_first
+    from GAME.main import level_the_first
 
     pygame.init()
     screen = pygame.display.set_mode([1248, 960])

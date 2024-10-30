@@ -1,2 +1,2 @@
-from thelobby import lobby
+from GAME.thelobby import lobby
 lobby()

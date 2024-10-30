@@ -1,9 +1,9 @@
 def needhelp():
     import pygame
-    from thelobby import lobby
+    from GAME.thelobby import lobby
     pygame.init()
     screen = pygame.display.set_mode([1248, 960])
-    fon = pygame.image.load("texturse/fonforhelp.jpg")
+    fon = pygame.image.load("GAME/texturse/fonforhelp.jpg")
     fon = pygame.transform.scale(fon, (1248, 960))
     font = pygame.font.Font(None, 100)
     text = font.render("Привет, друг, я разработчик этой", 1, [255, 255, 255])

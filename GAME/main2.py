@@ -1,47 +1,46 @@
-def level_the_first():
-    from room import level_the_room
-    from level import level_the_second
+def level_the_global1():
+    from GAME.room import level_the_room
     import pygame
     pygame.init()
     wall_width = 32
     wall_height = 32
-    step = 15
-    step1 = 5
+    step = 10
+    step1 = 10
     screen = pygame.display.set_mode([1248, 960])
-    fon = pygame.image.load("texturse/fon.png")
+    fon = pygame.image.load("GAME/texturse/fon.png")
     fon = pygame.transform.scale(fon, (1248, 960))
 
-    stone = pygame.image.load("texturse/мрамор итальянский.jpg")
+    stone = pygame.image.load("GAME/texturse/мрамор итальянский.jpg")
     stone = pygame.transform.scale(stone, (wall_width, wall_height))
 
-    ezhidze = pygame.image.load("texturse/ezhidze.png")
+    ezhidze = pygame.image.load("GAME/texturse/ezhidze.png")
     ezhidze = pygame.transform.scale(ezhidze, (64, 64))
     ezhidze_r = ezhidze.get_rect(topleft=(1000, 64))
 
-    lesenka = pygame.image.load("texturse/лестница.png")
+    lesenka = pygame.image.load("GAME/texturse/лестница.png")
     lesenka = pygame.transform.scale(lesenka, (wall_width, wall_height))
 
-    door_close_down = pygame.image.load("texturse/doors/door_close2.png")
+    door_close_down = pygame.image.load("GAME/texturse/doors/door_close2.png")
     door_close_down = pygame.transform.scale(door_close_down, (wall_width, wall_height))
-    door_close_up = pygame.image.load("texturse/doors/door_close1.png")
+    door_close_up = pygame.image.load("GAME/texturse/doors/door_close1.png")
     door_close_up = pygame.transform.scale(door_close_up, (wall_width, wall_height))
-    player = pygame.image.load("texturse/персик/персик11.png")
+    player = pygame.image.load("GAME/texturse/персик/персик11.png")
     player = pygame.transform.scale(player, (32, 64))
-    player_r = player.get_rect(topleft=(64,832))
-    walk = [pygame.transform.scale(pygame.image.load("texturse/персик/персик11.png"), (32, 64))]
+    player_r = player.get_rect(topleft=(32, 512))
+    walk = [pygame.transform.scale(pygame.image.load("GAME/texturse/персик/персик11.png"), (32, 64))]
     player_image_number = 0
-    walk_right = [pygame.transform.scale(pygame.image.load("texturse/персик/персик41.png"), (32, 64)),
-                  pygame.transform.scale(pygame.image.load("texturse/персик/персик42.png"), (32, 64)),
-                  pygame.transform.scale(pygame.image.load("texturse/персик/персик43.png"), (32, 64)),
-                  pygame.transform.scale(pygame.image.load("texturse/персик/персик44.png"), (32, 64))]
+    walk_right = [pygame.transform.scale(pygame.image.load("GAME/texturse/персик/персик41.png"), (32, 64)),
+                  pygame.transform.scale(pygame.image.load("GAME/texturse/персик/персик42.png"), (32, 64)),
+                  pygame.transform.scale(pygame.image.load("GAME/texturse/персик/персик43.png"), (32, 64)),
+                  pygame.transform.scale(pygame.image.load("GAME/texturse/персик/персик44.png"), (32, 64))]
 
-    walk_left = [pygame.transform.scale(pygame.image.load("texturse/персик/персик31.png"), (32, 64)),
-                 pygame.transform.scale(pygame.image.load("texturse/персик/персик32.png"), (32, 64)),
-                 pygame.transform.scale(pygame.image.load("texturse/персик/персик33.png"), (32, 64)),
-                 pygame.transform.scale(pygame.image.load("texturse/персик/персик34.png"), (32, 64))]
+    walk_left = [pygame.transform.scale(pygame.image.load("GAME/texturse/персик/персик31.png"), (32, 64)),
+                 pygame.transform.scale(pygame.image.load("GAME/texturse/персик/персик32.png"), (32, 64)),
+                 pygame.transform.scale(pygame.image.load("GAME/texturse/персик/персик33.png"), (32, 64)),
+                 pygame.transform.scale(pygame.image.load("GAME/texturse/персик/персик34.png"), (32, 64))]
     karta = ["***************************************",
              "***************************************",
-             "*        /                            *",
+             "*        |                            *",
              "*        /                            *",
              "*---***********************************",
              "*---                                  *",
@@ -56,8 +55,8 @@ def level_the_first():
              "*                                  ---*",
              "*                                  ---*",
              "*---***********************************",
-             "*---                |                 *",
-             "*---                |                 *",
+             "*---                                  *",
+             "*---                                  *",
              "***********************************---*",
              "*                                  ---*",
              "*                                  ---*",
@@ -82,8 +81,7 @@ def level_the_first():
                     bl = screen.blit(stone, (x, y))
                     stop.append(bl)
                 if col == "/":
-                    dooru_r = door_close_up.get_rect(topleft=(x, y))
-                    screen.blit(door_close_down, dooru_r)
+                    screen.blit(door_close_down, (x, y))
                 if col == "|":
                     door_r = door_close_down.get_rect(topleft=(x, y))
                     screen.blit(door_close_up, door_r)
@@ -95,12 +93,11 @@ def level_the_first():
             y += wall_height
             x = 0
         screen.blit(ezhidze, ezhidze_r)
-        #ёж
+
         ezhidze_r.x = ezhidze_r.x + step1
         if ezhidze_r.x < 32 or ezhidze_r.x > 1184:
             step1 = -step1
 
-#вспышка
         if player_r.colliderect(ezhidze_r):
             screen.fill([255, 0, 0])
             player_r.x = 32
@@ -131,13 +128,10 @@ def level_the_first():
             velY = -step
         if player_r.collidelist(lesenka_list) and keys[pygame.K_s]:
             velY = step
+        player_r.y = player_r.y + velY
 
         if player_r.colliderect(door_r) and keys[pygame.K_e]:
-            level_the_second()
-        if player_r.colliderect(dooru_r) and keys[pygame.K_e]:
             level_the_room()
-
-        player_r.y = player_r.y + velY
         for s in stop:
             if player_r.colliderect(s):
                 if velY < 0:
