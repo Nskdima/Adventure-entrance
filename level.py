@@ -12,8 +12,8 @@ def level_the_second():
     stone = pygame.image.load("texturse/мрамор итальянский.jpg")
     stone = pygame.transform.scale(stone, (wall_width, wall_height))
 
-    babka = pygame.image.load("texturse/babka.jpg")
-    babka = pygame.transform.scale(babka, (96, 128))
+    babka = pygame.image.load("бабка.png")
+    babka = pygame.transform.scale(babka, (160, 160))
 
     key = pygame.image.load("texturse/key.png")
     key = pygame.transform.scale(key, (32, 32))
@@ -112,7 +112,7 @@ def level_the_second():
         if key_r.x != 64:
             level_the_global1()
 
-        screen.blit(babka, (512, 448))
+        screen.blit(babka, (512, 416))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
